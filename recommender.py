@@ -8,13 +8,14 @@ class Recommender:
     def __init__(self):
         self.db_acc = DatabaseAccess()
         self.txt_prep = TextPreprocessing()
-        self.table = 'recipe_ingredients'
+        self.table = 'ingredients'
+        self.id_column = 'idRecipe'
         self.cos_sim_threshold = 0.4
 
     def recommend_recipes(self, user_ingredients):
         # read recipe ids and ingredients from database
         recipe_ids = self.db_acc.read_id(self.table)
-        ingredients = self.db_acc.read_ingredients(self.table)
+        ingredients = self.db_acc.read_ingredients(self.table, self.id_column)
         
         # convert sql query result to list 1d (list of recipe ids and list of ingredients)
         recipe_ids_ls = self.txt_prep.sql_query_to_list(recipe_ids)
