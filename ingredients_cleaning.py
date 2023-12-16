@@ -46,7 +46,6 @@ if __name__ == "__main__":
 
     # infinite loop to keep the program running
     while True:
-        print('looping...')
         # create object
         ingredients_processor = IngredientsProcessor(table_to, table_from)
         # fetch data
