@@ -1,5 +1,5 @@
 import mysql.connector
-import hashlib
+import shortuuid
 
 class Database:
     def __init__(self):
@@ -65,7 +65,7 @@ class DatabaseAccess:
         try:
             sql = 'INSERT INTO {} (id, idRecipe, ingredient) VALUES (%s, %s, %s)'.format(table_name)
             # modified list_data by adding new id column that using random string
-            list_data = [(hashlib.md5((str(item[0]) + item[1]).encode()).hexdigest()[:10], item[0], item[1]) for item in list_data]
+            list_data = [(shortuuid.uuid()[:10], item[0], item[1]) for item in list_data]
 
             self.database.my_cursor.executemany(sql, list_data)
             self.database.my_db.commit()
