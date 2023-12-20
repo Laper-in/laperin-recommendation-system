@@ -12,9 +12,9 @@ class Recommender:
     def __init__(self):
         self.db_acc = DatabaseAccess()
         self.txt_prep = TextPreprocessing()
-        self.table =  'ingredients'
+        self.table = 'recipes_cleaned'
         self.id_column = 'idRecipe'
-        self.cos_sim_threshold = 0.4
+        self.cos_sim_threshold = 0.1  #ini aku ubah 1 biar kebaca dulu buat deploy
 
     def recommend_recipes(self, user_ingredients):
         # read recipe ids and ingredients from database
@@ -37,6 +37,8 @@ class Recommender:
         # adjust cosine similarity score and recipe ids
         cos_sim = cos_sim[1:]
         cos_sim_dict = dict(enumerate(cos_sim))
+        return cos_sim_dict
+        # return cos_sim_dict
         cos_sim_dict = {k: v for k, v in sorted(cos_sim_dict.items(), key=lambda item: item[1], reverse=True) if v > self.cos_sim_threshold}
 
         # set corresponding recipe ids based on cosine similarity score
