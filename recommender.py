@@ -3,12 +3,17 @@ from db_access import DatabaseAccess
 from text_preprocessing import TextPreprocessing
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
+from fastapi import FastAPI
 
+app = FastAPI()
+
+
+@app.post("/recomender")
 class Recommender:
     def __init__(self):
         self.db_acc = DatabaseAccess()
         self.txt_prep = TextPreprocessing()
-        self.table = 'ingredients'
+        self.table = 'recipe_cleaned'
         self.id_column = 'idRecipe'
         self.cos_sim_threshold = 0.4
 

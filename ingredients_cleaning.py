@@ -1,7 +1,12 @@
 import time
 from db_access import DatabaseAccess
 from text_preprocessing import TextPreprocessing
+from fastapi import FastAPI
 
+app = FastAPI()
+
+
+@app.post("/cleaning")
 class IngredientsProcessor:
     def __init__(self, table_to, table_from):
         self.db_acc = DatabaseAccess()
@@ -41,7 +46,7 @@ class IngredientsProcessor:
         self.db_acc.insert_many_ingredients(data, self.table_to)
 
 if __name__ == "__main__":
-    table_to = 'ingredients'
+    table_to = 'recipe_cleaned'
     table_from = 'recipes'
 
     # infinite loop to keep the program running
