@@ -2,7 +2,12 @@ import re
 from nltk.tokenize import RegexpTokenizer
 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+from fastapi import FastAPI
 
+app = FastAPI()
+
+
+@app.post("/text")
 class TextPreprocessing:
     def __init__(self):
         # initialize tokenizer, stopwords, and stemmer

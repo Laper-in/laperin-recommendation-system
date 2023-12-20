@@ -42,7 +42,7 @@ class DatabaseAccess:
     def read_ingredients(self, table_name, id_column, mode='ASC'):
         '''Read ingredients from database'''
         try:
-            sql = 'SELECT ingredient FROM {} ORDER BY {} {}'.format(table_name, id_column, mode)
+            sql = 'SELECT recipe_cleaned FROM {} ORDER BY {} {}'.format(table_name, id_column, mode)
             self.database.my_cursor.execute(sql)
             result = self.database.my_cursor.fetchall()
             return result
@@ -53,7 +53,7 @@ class DatabaseAccess:
         '''Read ingredients from database by recipe ids'''
     
         try:
-            sql = 'SELECT ingredient FROM {} WHERE {} IN ({})'.format(table_name, id_column, recipe_ids)
+            sql = 'SELECT recipe_cleaned FROM {} WHERE {} IN ({})'.format(table_name, id_column, recipe_ids)
             self.database.my_cursor.execute(sql)
             result = self.database.my_cursor.fetchall()
             return result
