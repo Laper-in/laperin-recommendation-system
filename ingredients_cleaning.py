@@ -46,7 +46,7 @@ class IngredientsProcessor:
         self.db_acc.insert_many_ingredients(data, self.table_to)
 
 if __name__ == "__main__":
-    table_to = 'ingredients'
+    table_to = 'recipes_cleaned'
     table_from = 'recipes'
 
     # infinite loop to keep the program running
