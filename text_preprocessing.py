@@ -16,7 +16,7 @@ class TextPreprocessing:
         #self.stemmer_factory = StemmerFactory()
         
         # initialize additional stopwords and remove 'tahu' from stopwords list
-        self.additional_stopwords = ['cm', 'kg', 'gr', 'gram', 'ml', 'liter', 'blok', 'pcs', 'ikat', 'jempol', 'ekor', 'siung', 'sejumput', 'batang', 'buah', 'potong', 'butir', 'bonggol', 'balok', 'genggam', 'lembar', 'papan', 'sdt', 'sdm', 'paha', 'dada', 'filet', 'fillet', 'iris']
+        self.additional_stopwords = ['cm', 'kg', 'gr', 'gram', 'ml', 'liter', 'blok', 'biji', 'pcs', 'ikat', 'jempol', 'ekor', 'siung', 'sejumput', 'batang', 'buah', 'potong', 'butir', 'bonggol', 'balok', 'genggam', 'lembar', 'papan', 'sdt', 'sdm', 'paha', 'dada', 'filet', 'fillet', 'iris']
         self.stopwords = self.stopwords_factory.get_stop_words() + self.additional_stopwords
         self.stopwords.remove('tahu')
 
