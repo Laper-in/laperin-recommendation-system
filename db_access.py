@@ -7,7 +7,7 @@ class Database:
             host='localhost',
             user='root',
             passwd='',
-            database=''
+            database='',
         )
         self.my_cursor = self.my_db.cursor()
 

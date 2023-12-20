@@ -37,7 +37,7 @@ class Recommender:
         # adjust cosine similarity score and recipe ids
         cos_sim = cos_sim[1:]
         cos_sim_dict = dict(enumerate(cos_sim))
-        return cos_sim_dict
+        #return cos_sim_dict
         # return cos_sim_dict
         cos_sim_dict = {k: v for k, v in sorted(cos_sim_dict.items(), key=lambda item: item[1], reverse=True) if v > self.cos_sim_threshold}
 
