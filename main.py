@@ -1,13 +1,13 @@
-# main.py
+from recommender import Recommender
+from db_access import DatabaseAccess
 
-# Import statements for the other modules
-import db_access
-import recommender
-import text_preprocessing
+from fastapi import FastAPI
 
-# Your main code here
-if __name__ == "__main__":
-    # Call functions or execute code from other modules
-    db_access.some_function()
-    recommender.another_function()
-    text_preprocessing.yet_another_function()
+app = FastAPI()
+recommender_instance = Recommender()
+
+@app.post("/recommender")
+def get_recommended_recipes(user_input: str):
+    recommended_recipes = recommender_instance.recommend_recipes(user_input)
+    return {"recommended_recipes": recommended_recipes}
+        

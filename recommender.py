@@ -7,13 +7,12 @@ from fastapi import FastAPI
 
 app = FastAPI()
 
-
-@app.post("/recomender")
+# @app.post("/recomender")
 class Recommender:
     def __init__(self):
         self.db_acc = DatabaseAccess()
         self.txt_prep = TextPreprocessing()
-        self.table = 'recipe_cleaned'
+        self.table =  'ingredients'
         self.id_column = 'idRecipe'
         self.cos_sim_threshold = 0.4
 
@@ -54,3 +53,10 @@ if __name__ == "__main__":
         sys.stdout.write(', '.join(map(str, recommended_recipes)))
     else:
         print("Please provide user ingredients.")
+        
+        
+recommender_instance = Recommender()
+
+
+        
+        
